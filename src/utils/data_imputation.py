@@ -52,5 +52,5 @@ def fill_and_standardize_values_by_id(
         df_clean[value_col] = df_clean[id_col].map(id_to_consensus_map).fillna(df_clean[value_col])
     else:
         missing_mask = df_clean[value_col].isna()
-        df_clean.loc[missing_mask, value_col] = df_clean.loc[missing_mask, value_col].map(id_to_consensus_map)
+        df_clean.loc[missing_mask, value_col] = df_clean.loc[missing_mask, id_col].map(id_to_consensus_map)
     return df_clean
