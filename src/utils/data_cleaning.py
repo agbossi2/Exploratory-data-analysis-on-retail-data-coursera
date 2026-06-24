@@ -14,4 +14,4 @@ def standardize_strs(df: pd.DataFrame, str_cols: list[str]) -> pd.DataFrame:
     df_copy = df.copy()
     for col in str_cols:
         df_copy.loc[:, col] = df_copy[col].astype(str).str.strip().str.lower()
-    return df
+    return df_copy
