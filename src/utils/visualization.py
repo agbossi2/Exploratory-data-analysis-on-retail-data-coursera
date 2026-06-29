@@ -33,3 +33,28 @@ def plot_distribution(df: pd.DataFrame, y: str, title: str, plt_type: str='box')
 
     print(f'Skew: {df[y].skew()}')
     print(f'Kurtosis: {df[y].kurt()}')
+
+
+def plot_raw_log_boxplot(df: pd.DataFrame, x: str, y: str, title: str):
+    fig, axes = plt.subplots(1, 2, figsize=(14, 5))
+
+    sns.boxplot(
+        data=df,
+        x=x,
+        y=y,
+        ax=axes[0],
+    )
+    axes[0].set_title(f"{title} - raw scale")
+    axes[0].tick_params(axis='x', rotation=45) 
+
+    sns.boxplot(
+        data=df, 
+        x=x,
+        y=y,
+        ax=axes[1]
+    )
+    plt.yscale("log")
+    axes[1].set_title(f"{title} - log scale")
+    axes[1].tick_params(axis='x', rotation=45) 
+    plt.tight_layout()
+    plt.show()
